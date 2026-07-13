@@ -189,6 +189,17 @@ fieldset.opts legend{font-family:var(--mfont);font-size:.68rem;letter-spacing:.1
   body.haspdp{padding-bottom:74px}
 }
 
+/* media */
+figure.ph{margin:0;background:#fff;border:1px solid var(--line);padding:10px}
+figure.ph img{width:100%;height:auto;display:block}
+figure.ph figcaption{font-family:var(--mfont);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);padding-top:10px}
+.dark figure.ph{background:var(--panel);border-color:#3A4046}
+.dark figure.ph figcaption{color:#9AA1A8}
+.mediarow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.mediarow figure.ph img{aspect-ratio:4/3;object-fit:cover}
+.video{position:relative;aspect-ratio:16/9;background:var(--ink);border:1px solid var(--line)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* footer */
 footer{background:var(--ink);color:#B7BDC3;border-top:4px solid var(--yellow);padding:56px 0 30px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px}
@@ -327,6 +338,10 @@ footer li{padding:4px 0;font-size:.95rem}
         </ul>
       </div>
     </div>
+    <div class="grid g2" style="margin-top:20px">
+      <figure class="ph"><img src="img/chassis-ultralite-alt.jpg" alt="Sport-Tact Ultra Lite chassis profile showing M-LOK forend" width="700" height="525" loading="lazy"><figcaption>Ultra Lite / M-LOK, ARCA rail, 22 oz base</figcaption></figure>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/oId7lKYRiss" title="Ultra Lite chassis deep dive with Wilson from Accurate-Mag" loading="lazy" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+    </div>
   </div>
 </section>
 
@@ -340,13 +355,14 @@ footer li{padding:4px 0;font-size:.95rem}
     <div class="grid g2">
       <div class="card">
         <h3>AMSR</h3>
-        <p>The Advanced Multi-caliber Sniper Rifle, built around the Sport-Tact chassis for military and law enforcement programs, with multi-caliber capability in a single platform.</p>
+        <p>The Advanced Multi-caliber Sniper Rifle for military and law enforcement programs. On-demand caliber changes with a single allen wrench across 308 Win, 6.5 CM, 30-06, 300 WM, 300 NM, 338 NM, and 338 LM. Quad-lock action, 15 lb system, folds into a 26 inch case with scope mounted.</p>
       </div>
       <div class="card">
         <h3>AM725-A1</h3>
         <p>A precision rifle system pairing the Accurate-Mag chassis with custom barreled actions. Remington 700 based models use barreled actions custom made by GA Precision.</p>
       </div>
     </div>
+    <figure class="ph" style="margin-top:20px;max-width:700px"><img src="img/amsr-main.jpg" alt="AMSR advanced multi-caliber sniper rifle, full profile" width="700" height="525" loading="lazy"><figcaption>AMSR / Quad-lock multi-caliber action</figcaption></figure>
     <div class="note">Accurate-Mag worked with Savage to create the first .300 and .338 Norma Magnum production rifle.</div>
   </div>
 </section>
