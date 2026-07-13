@@ -152,6 +152,41 @@ h3{font-family:var(--dfont);font-weight:600;text-transform:uppercase;font-size:1
 .dark .prose p{color:#C7CCD1}
 .note{border-left:3px solid var(--yellow);background:#fff;padding:18px 22px;margin-top:26px;font-size:.98rem;color:var(--graphite)}
 
+/* pdp */
+.pdgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.gal .mainimg{background:#fff;border:1px solid #4A5158;padding:10px}
+.gal .mainimg img{width:100%;height:auto}
+.gal .altimg{background:#fff;border:1px solid #4A5158;padding:8px;margin-top:14px;max-width:46%}
+.gal .altimg img{width:100%;height:auto}
+.pdp h1{font-size:clamp(2.1rem,4.5vw,3.1rem);max-width:none}
+fieldset.opts{border:1px solid #3A4046;padding:16px 18px 18px;margin-top:22px}
+fieldset.opts legend{font-family:var(--mfont);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#9AA1A8;padding:0 8px}
+.pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{position:relative;cursor:pointer}
+.pill input{position:absolute;opacity:0;inset:0}
+.pill span{display:inline-block;font-family:var(--dfont);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;padding:9px 18px;border:1px solid #5A6169;color:#C7CCD1}
+.pill input:checked + span{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.pill input:focus-visible + span{outline:3px solid var(--yellow);outline-offset:2px}
+.opthint{font-family:var(--mfont);font-size:.72rem;color:#8B929A;margin-top:10px;letter-spacing:.04em}
+.ticks{list-style:none;margin-top:22px}
+.ticks li{padding:6px 0 6px 26px;position:relative;color:#C7CCD1;font-size:.98rem}
+.ticks li::before{content:"";position:absolute;left:0;top:13px;width:12px;height:6px;border-left:3px solid var(--yellow);border-bottom:3px solid var(--yellow);transform:rotate(-45deg)}
+.faq details{background:#fff;border:1px solid var(--line);margin-bottom:12px}
+.faq summary{font-family:var(--dfont);font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:1.15rem;padding:16px 20px;cursor:pointer;list-style:none;position:relative;padding-right:48px}
+.faq summary::after{content:"+";position:absolute;right:20px;top:12px;font-size:1.5rem;color:var(--yellow-deep)}
+.faq details[open] summary::after{content:"\2013"}
+.faq details p{padding:0 20px 18px;color:var(--graphite)}
+.avatar{width:120px;height:120px;background:var(--panel);border:1px solid #4A5158;display:grid;place-items:center;font-family:var(--dfont);font-weight:700;font-size:2.6rem;color:var(--yellow);margin-bottom:24px}
+.stickycta{display:none}
+@media(max-width:720px){
+  .pdgrid{grid-template-columns:1fr}
+  .stickycta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);border-top:3px solid var(--yellow);align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+  .stickycta .sp{font-family:var(--dfont);font-weight:700;color:#fff;font-size:1.1rem;line-height:1.15}
+  .stickycta .sp small{display:block;font-family:var(--mfont);font-weight:400;font-size:.68rem;color:var(--yellow);letter-spacing:.1em}
+  .stickycta .btn{padding:11px 18px;font-size:.98rem;flex:none}
+  body.haspdp{padding-bottom:74px}
+}
+
 /* footer */
 footer{background:var(--ink);color:#B7BDC3;border-top:4px solid var(--yellow);padding:56px 0 30px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px}
@@ -206,6 +241,7 @@ footer li{padding:4px 0;font-size:.95rem}
       <p>Accurate-Mag Products is a division of the B.M.L. Tool and Manufacturing Corporation in Monroe, Connecticut. B.M.L. Tool is a veteran owned small business with avid gun owners and shooters populating its workforce.</p>
       <p>Because B.M.L. Tool was a premier tool and die shop before it joined the firearm industry, the natural entry point was the metal formed magazine. What began as a few magazine types has grown into a catalog of more than 40 magazine styles and calibers, plus bottom metal, chassis systems, and complete rifles.</p>
       <p>Most of that work ships quietly inside OEM components of Savage, Remington, Ruger, and Colt rifles. If you shoot precision bolt guns, you have probably already experienced the quality of an Accurate-Mag part without knowing it.</p>
+      <p>Now in its third generation of family ownership, the corporation's officers include <a href="author-anthony-battaglia.html">Anthony R. Battaglia</a>, who represented the company in Senator Chris Murphy's 2017 Connecticut manufacturer spotlight.</p>
     </div>
   </div>
 </section>
@@ -219,9 +255,9 @@ footer li{padding:4px 0;font-size:.95rem}
     </div>
     <div class="tl">
       <div class="step">
-        <span class="k">Foundation</span>
-        <h3>Premier tool and die work</h3>
-        <p>B.M.L. Tool builds its reputation in precision tooling and metal forming, the exact disciplines behind a reliable magazine body.</p>
+        <span class="k">Foundation / 1968</span>
+        <h3>A two-car garage in the Bridgeport area</h3>
+        <p>Philip Battaglia and two partners found B.M.L. Tool in 1968, building its reputation in precision tooling and metal forming, the exact disciplines behind a reliable magazine body.</p>
       </div>
       <div class="step">
         <span class="k">Entry</span>
