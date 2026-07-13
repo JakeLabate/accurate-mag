@@ -1,0 +1,43 @@
+name: revendor-media
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          mkdir -p img
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+          grab() {
+            out="$1"; shift
+            for u in "$@"; do
+              echo "try: $u"
+              curl -fsSL -A "$UA" -e "https://accurate-mag.com/" -o "img/$out" "$u" || continue
+              if file "img/$out" | grep -q "JPEG image data"; then echo "OK $out from $u"; return 0; fi
+            done
+            echo "FAILED $out"; return 1
+          }
+          grab amsr-main.jpg \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2022/02/4321-1-700x525.jpg" \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2022/02/4321-1-scaled.jpg" \
+            "https://accurate-mag.com/wp-content/uploads/2022/02/4321-1-700x525.jpg"
+          grab amsr-alt.jpg \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2022/02/IMG_4322-700x463.jpg" \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2022/02/IMG_4322-scaled.jpg" \
+            "https://accurate-mag.com/wp-content/uploads/2022/02/IMG_4322-700x463.jpg"
+          grab chassis-ultralite.jpg \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2-700x525.jpg" \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2.jpg" \
+            "https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2-700x525.jpg"
+          grab chassis-ultralite-alt.jpg \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White12-700x525.jpg" \
+            "https://web.archive.org/web/0id_/https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White12.jpg" \
+            "https://accurate-mag.com/wp-content/uploads/2024/01/ULF-White12-700x525.jpg"
+          file img/*.jpg
+      - run: |
+          git config user.name "vendor-bot"
+          git config user.email "vendor@users.noreply.github.com"
+          git add img && git commit -m "Re-vendor media as valid JPEGs" && git push
