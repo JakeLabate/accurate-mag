@@ -1,0 +1,18 @@
+OK amsr-main.jpg <- https://web.archive.org/web/20250827182405id_/https://accurate-mag.com/wp-content/uploads/2022/02/4321-1-700x525.jpg (25625B)
+OK amsr-alt.jpg <- https://web.archive.org/web/20250827190258id_/https://accurate-mag.com/wp-content/uploads/2022/02/IMG_4322-700x463.jpg (23236B)
+CDX error accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2-700x525.jpg: <urlopen error [Errno 111] Connection refused>
+MISS chassis-ultralite.jpg: no archived copy found
+CDX error accurate-mag.com/wp-content/uploads/2024/01/ULF-White12-700x525.jpg: <urlopen error [Errno 111] Connection refused>
+CDX error accurate-mag.com/wp-content/uploads/2024/01/ULF-White12.jpg: <urlopen error [Errno 111] Connection refused>
+MISS chassis-ultralite-alt.jpg: no archived copy found
+
+=== ARCHIVED JPEG INVENTORY (substitutes) ===
+CDX error accurate-mag.com/wp-content/uploads/2022/*: <urlopen error [Errno 111] Connection refused>
+
+-- accurate-mag.com/wp-content/uploads/2022/*: 0 archived
+CDX error accurate-mag.com/wp-content/uploads/2024/*: <urlopen error [Errno 111] Connection refused>
+
+-- accurate-mag.com/wp-content/uploads/2024/*: 0 archived
+CDX error accurate-mag.com/wp-content/uploads/2018/*: <urlopen error _ssl.c:983: The handshake operation timed out>
+
+-- accurate-mag.com/wp-content/uploads/2018/*: 0 archived
