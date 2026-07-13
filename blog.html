@@ -189,6 +189,17 @@ fieldset.opts legend{font-family:var(--mfont);font-size:.68rem;letter-spacing:.1
   body.haspdp{padding-bottom:74px}
 }
 
+/* media */
+figure.ph{margin:0;background:#fff;border:1px solid var(--line);padding:10px}
+figure.ph img{width:100%;height:auto;display:block}
+figure.ph figcaption{font-family:var(--mfont);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);padding-top:10px}
+.dark figure.ph{background:var(--panel);border-color:#3A4046}
+.dark figure.ph figcaption{color:#9AA1A8}
+.mediarow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.mediarow figure.ph img{aspect-ratio:4/3;object-fit:cover}
+.video{position:relative;aspect-ratio:16/9;background:var(--ink);border:1px solid var(--line)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* footer */
 footer{background:var(--ink);color:#B7BDC3;border-top:4px solid var(--yellow);padding:56px 0 30px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px}
@@ -286,6 +297,15 @@ footer li{padding:4px 0;font-size:.95rem}
         <h3>AM Multi-Cal system featured in Special Weapons</h3>
         <p>The August 2013 issue of Special Weapons Magazine covers the Accurate-Mag multi-caliber system, including the testing performed on the platform.</p>
         <a class="more" href="https://accurate-mag.com/news/news-2/" rel="noopener">Read the original post</a>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/oId7lKYRiss" title="Ultra Lite chassis deep dive with Wilson from Accurate-Mag" loading="lazy" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+      <div class="card">
+        <span class="pn">Watch / Chassis</span>
+        <h3>Ultra Lite deep dive on YouTube</h3>
+        <p>A walkthrough of the Sport-Tact Ultra Lite chassis features with Wilson from Accurate-Mag, covering the ARCA forend, M-LOK layout, and weight targets.</p>
+        <a class="more" href="https://www.youtube.com/watch?v=oId7lKYRiss" rel="noopener">Watch on YouTube</a>
       </div>
     </div>
     <div class="note">The Helderburg post above demonstrates the individual article template. Remaining press items link to the original articles on the current site; on the production build each gets its own page. Author profiles: <a href="author-anthony-battaglia.html">Anthony R. Battaglia</a>.</div>
