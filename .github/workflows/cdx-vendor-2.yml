@@ -1,0 +1,62 @@
+name: cdx-vendor-2
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 << 'PY'
+          import urllib.request, json, os, time
+          os.makedirs("img", exist_ok=True)
+          report=[]
+          def cdx(url, extra=""):
+              q=f"https://web.archive.org/cdx/search/cdx?url={url}&output=json&filter=statuscode:200&fl=timestamp,original{extra}"
+              for attempt in range(4):
+                  try:
+                      with urllib.request.urlopen(q, timeout=40) as r:
+                          rows=json.load(r)
+                          return rows[1:] if len(rows)>1 else []
+                  except Exception as e:
+                      report.append(f"cdx retry{attempt} {url}: {e}")
+                      time.sleep(8*(attempt+1))
+              return []
+          def grab(out, paths):
+              for p in paths:
+                  rows=cdx(p); time.sleep(6)
+                  for ts, orig in rows[:3]:
+                      u=f"https://web.archive.org/web/{ts}id_/{orig}"
+                      try:
+                          with urllib.request.urlopen(u, timeout=60) as r:
+                              data=r.read()
+                          if data[:2]==b"\xff\xd8":
+                              open(f"img/{out}","wb").write(data)
+                              report.append(f"OK {out} <- {u} ({len(data)}B)")
+                              return True
+                          report.append(f"not-jpeg {out} <- {u}")
+                      except Exception as e:
+                          report.append(f"fetch-fail {u}: {e}")
+                      time.sleep(4)
+              report.append(f"MISS {out}")
+              return False
+          grab("chassis-ultralite.jpg",["accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2-700x525.jpg","accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2.jpg","accurate-mag.com/wp-content/uploads/2024/01/ULF-White-2*"])
+          time.sleep(6)
+          grab("chassis-ultralite-alt.jpg",["accurate-mag.com/wp-content/uploads/2024/01/ULF-White12-700x525.jpg","accurate-mag.com/wp-content/uploads/2024/01/ULF-White12.jpg","accurate-mag.com/wp-content/uploads/2024/01/ULF*"])
+          time.sleep(6)
+          report.append("=== 2024/01 inventory ===")
+          for ts,orig in cdx("accurate-mag.com/wp-content/uploads/2024/*","&matchType=glob&filter=mimetype:image/jpeg&collapse=urlkey&limit=100"): report.append(f"{ts} {orig}")
+          time.sleep(6)
+          report.append("=== 2018 inventory ===")
+          for ts,orig in cdx("accurate-mag.com/wp-content/uploads/2018/*","&matchType=glob&filter=mimetype:image/jpeg&collapse=urlkey&limit=100"): report.append(f"{ts} {orig}")
+          open("vendor-report.txt","w").write("\n".join(report))
+          PY
+      - run: |
+          git config user.name "vendor-bot"
+          git config user.email "vendor@users.noreply.github.com"
+          for f in chassis-ultralite.jpg chassis-ultralite-alt.jpg; do
+            file "img/$f" | grep -q "JPEG" && git add "img/$f" || echo "skip $f"
+          done
+          git add vendor-report.txt
+          git commit -m "CDX vendor pass 2" && git push
